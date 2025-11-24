@@ -6,3 +6,4 @@ backend/uploads/*
 backend/node_modules
 backend/node_modules
 backend/.zshrc
+backend/.DS_Store
