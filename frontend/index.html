@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Araz Security Scanner</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f5f5f5; }
+        input, button { font-size: 16px; padding: 8px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>Upload Source Code ZIP</h1>
+
+<form id="uploadForm">
+    <input type="file" name="sourceZip" accept=".zip" required>
+    <button type="submit">Scan</button>
+</form>
+
+<div class="result" id="result"></div>
+
+<script>
+const form = document.getElementById('uploadForm');
+const resultDiv = document.getElementById('result');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fileInput = form.querySelector('input[name="sourceZip"]');
+    const formData = new FormData();
+    formData.append('sourceZip', fileInput.files[0]);
+
+    resultDiv.textContent = 'Scanning...';
+
+    try {
+        const res = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+            resultDiv.innerHTML = `<a href="${data.reportUrl}" target="_blank">View Report</a>`;
+        } else {
+            resultDiv.textContent = `Error: ${data.error}`;
+        }
+    } catch (err) {
+        resultDiv.textContent = `Error: ${err.message}`;
+    }
+});
+</script>
+
+</body>
+</html>

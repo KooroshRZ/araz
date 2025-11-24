@@ -1,0 +1,35 @@
+body {
+    font-family: Arial;
+    background: #1d1f21;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.container {
+    background: #2b2e33;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+}
+
+button {
+    background: #0084ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #006bd6;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 14px;
+}

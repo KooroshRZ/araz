@@ -1,0 +1,3 @@
+[submodule "sec_tool"]
+	path = sec_tool
+	url = https://github.com/KooroshRZ/oss-hacker
